@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list lines="full">
+    <ion-item>
+      <ion-input required type="text" placeholder="word/sentence" [(ngModel)]="vocab.vocab"></ion-input>
+    </ion-item>
+    <ion-item class="ion-no-padding">
+        <!-- <ion-label>Category </ion-label> -->
+        <ion-select value="vocabulary" okText="Okay" cancelText="Dismiss" [(ngModel)]="vocab.category">
+          <ion-select-option value="vocabulary">vocabulary</ion-select-option>
+          <ion-select-option value="phrase">phrase</ion-select-option>
+          <ion-select-option value="idiom">idiom</ion-select-option>
+          <ion-select-option value="expression">expression</ion-select-option>
+          <ion-select-option value="others">others</ion-select-option>
+        </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" placeholder="subcategory" [(ngModel)]="vocab.subcategory"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-textarea rows="5" cols="20" placeholder="notes here..." [(ngModel)]="vocab.notes"></ion-textarea>
+    </ion-item>  
+  </ion-list>
+  <ion-button expand="full" (click)="saveVocab()">Save</ion-button>
+</ion-content>
