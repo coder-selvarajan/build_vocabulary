@@ -23,6 +23,8 @@ export class VocabService {
   constructor(db: AngularFirestore) {
     this.vocabCollection = db.collection<Vocab>('Vocabulary');
 
+    console.log("in constructor");
+
     this.vocabs = this.vocabCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
@@ -35,7 +37,17 @@ export class VocabService {
   }
 
   getVocabs() {
-    return this.vocabs;
+    // return this.vocabs;
+
+    return this.vocabCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return {id, ...data};
+        });
+      })
+    );
   }
 
   getVocab(id) {

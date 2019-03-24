@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'listing/:category', loadChildren: './pages/vocab-listing/vocab-listing.module#VocabListingPageModule' },
   { path: 'details', loadChildren: './pages/vocab-details/vocab-details.module#VocabDetailsPageModule' },
   { path: 'details/:id', loadChildren: './pages/vocab-details/vocab-details.module#VocabDetailsPageModule' },
+  { path: 'view/:id', loadChildren: './pages/vocab-view/vocab-view.module#VocabViewPageModule' },
 
 ];
 

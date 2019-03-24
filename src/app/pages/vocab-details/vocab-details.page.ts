@@ -12,7 +12,7 @@ export class VocabDetailsPage implements OnInit {
 
   vocab: Vocab = {
     vocab: "",
-    category: "",
+    category: "vocabulary",
     subcategory: "",
     notes: ""
   };
@@ -49,13 +49,13 @@ export class VocabDetailsPage implements OnInit {
     if (this.vocabId) {
       this.vocabService.updateVocab(this.vocab, this.vocabId).then(() => {
         loading.dismiss();
-        this.nav.navigateBack('home');
+        this.nav.back();
       });
     }
     else {
       this.vocabService.addVocab(this.vocab).then(() => {
         loading.dismiss();
-        this.nav.navigateBack('home');
+        this.nav.back();
       });
     }
 

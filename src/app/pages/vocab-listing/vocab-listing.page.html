@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
-    <ion-title>Listing</ion-title>
+    <ion-title>{{ category | uppercase }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -19,8 +19,8 @@
           </div>
         </ng-container>
     
-        <ion-item-sliding *ngFor="let item of vocabs">
-          <ion-item lines="inset" button [routerLink]="['/details', item.id]">
+        <ion-item-sliding *ngFor="let item of vocabs"  #slidingItem>
+          <ion-item lines="inset" button [routerLink]="['/view', item.id]">
             <ion-label>
               {{ item.vocab }}
               <p>{{ item.notes }}</p>
@@ -28,9 +28,13 @@
           </ion-item>
         
           <ion-item-options side="end">
-            <ion-item-option (click)="remove(item)" color="secondary">
-              Check 
-              <ion-icon name="checkmark" slot="end"></ion-icon>
+            <ion-item-option (click)="edit(slidingItem, item.id)" color="secondary">
+              <!-- <ion-icon name="add"></ion-icon>  -->
+              Edit 
+            </ion-item-option>
+            <ion-item-option (click)="remove(item)" color="danger">
+              <!-- <ion-icon name="close"></ion-icon> -->
+              Remove 
             </ion-item-option>
           </ion-item-options>
         </ion-item-sliding>

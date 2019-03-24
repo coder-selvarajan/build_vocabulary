@@ -17,6 +17,7 @@ export class HomePage implements OnInit {
       'phrase',
       'idiom',
       'expression',
+      'sentence',
       'others'
     ];
   }

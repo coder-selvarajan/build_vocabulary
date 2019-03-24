@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Vocab, VocabService } from '../../services/vocab.service';
 import { ActivatedRoute } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, IonItemSliding, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-vocab-listing',
@@ -13,7 +13,8 @@ export class VocabListingPage implements OnInit {
   vocabs: Vocab[] = [];
   category: string = "";
 
-  constructor(private vocabService: VocabService, private route: ActivatedRoute, private loadingController: LoadingController) {
+  constructor(private vocabService: VocabService, private route: ActivatedRoute, 
+    private loadingController: LoadingController, private navController: NavController) {
 
   }
 
@@ -25,14 +26,15 @@ export class VocabListingPage implements OnInit {
   }
 
   async getItemsByCategory() {
-    console.log(this.category);
-
     const loading = await this.loadingController.create({
       message: "Loading.."
     });
     await loading.present();
 
+    this.vocabs = [];
+    
     this.vocabService.getVocabs().subscribe(res => {
+      console.log(this.category);
       loading.dismiss();
       this.vocabs = res.filter(item => item.category == this.category);
     });
@@ -42,4 +44,8 @@ export class VocabListingPage implements OnInit {
     this.vocabService.removeVocab(item.id);
   }
 
+  edit(slidingItem: IonItemSliding, id: String) {
+    slidingItem.close();
+    this.navController.navigateForward("details/" + id);
+  }
 }
