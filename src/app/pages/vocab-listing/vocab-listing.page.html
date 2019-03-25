@@ -22,7 +22,7 @@
         <ion-item-sliding *ngFor="let item of vocabs"  #slidingItem>
           <ion-item lines="inset" button [routerLink]="['/view', item.id]">
             <ion-label>
-              {{ item.vocab }}
+              <h2>{{ item.vocab }}</h2>
               <p>{{ item.notes }}</p>
             </ion-label>
           </ion-item>

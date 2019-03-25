@@ -3,23 +3,29 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
-    <ion-title> {{ vocab.category | uppercase }} Item</ion-title>
+    <ion-title> {{ vocab.category | uppercase }} </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
   <ion-list lines="none">
     <ion-item lines="full">
-      <h1 class="text-info">{{ vocab.vocab }}</h1>
+      <ion-text color="primary">
+          <h1>{{ vocab.vocab }}</h1>
+      </ion-text>
     </ion-item>
     <ion-item>
-      (t) {{ vocab.category }}
+      <ion-text color="secondary">
+        (t) {{ vocab.category }}
+      </ion-text>
     </ion-item>
     <ion-item *ngIf="vocab.subcategory">
       (st) {{ vocab.subcategory }}
     </ion-item>
     <ion-item>
-      (m) {{ vocab.notes }}
+      <ion-text color="dark">
+          <p>(m) {{ vocab.notes }}</p>
+      </ion-text>
     </ion-item>
 
   </ion-list>
