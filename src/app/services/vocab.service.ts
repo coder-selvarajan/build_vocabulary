@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+// import { Observable } from 'rxjs';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Action } from 'rxjs/internal/scheduler/Action';
@@ -18,33 +19,33 @@ export class VocabService {
 
   private vocabCollection: AngularFirestoreCollection<Vocab>;
 
-  private vocabs: Observable<Vocab[]>;
+  vocabs$: Observable<Vocab[]>;
 
-  constructor(db: AngularFirestore) {
-    this.vocabCollection = db.collection<Vocab>('Vocabulary');
+  constructor(private db: AngularFirestore) {
+    this.vocabCollection = this.db.collection<Vocab>('Vocabulary');
 
     console.log("in constructor");
 
-    this.vocabs = this.vocabCollection.snapshotChanges().pipe(
-      map(actions => {
-        return actions.map(a => {
-          const data = a.payload.doc.data();
-          const id = a.payload.doc.id;
-          return {id, ...data};
+    this.vocabs$ = this.vocabCollection.snapshotChanges().pipe(map(actions => {
+        return actions.map(action => {
+          const data = action.payload.doc.data() as Vocab;
+          const id = action.payload.doc.id;
+          return { id, ...data };
         });
       })
     );
+
   }
 
   getVocabs() {
-    // return this.vocabs;
+    // return this.vocabs$;
 
     return this.vocabCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
-          const data = a.payload.doc.data();
+          const data = a.payload.doc.data() as Vocab;
           const id = a.payload.doc.id;
-          return {id, ...data};
+          return { id, ...data };
         });
       })
     );
