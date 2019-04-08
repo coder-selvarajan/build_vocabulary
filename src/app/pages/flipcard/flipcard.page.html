@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title> RANDOM VOCAB </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="getRandomItems()">
+        <ion-icon slot="icon-only" name="shuffle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<br/>
+
+<ion-content>
+  <ion-list lines="full">
+    <ion-list-header>
+      <ion-label>Guess the meaning before you flip </ion-label>
+    </ion-list-header>
+    <ion-item-sliding *ngFor="let item of rndVocabs; let i = index" #slidingItem>
+      <ion-item lines="inset" button [routerLink]="['/view', item.id]">
+        <ion-label>
+          <h1>{{ item.vocab }}</h1>
+          <!-- <p>(t) {{ item.category }} - (m) {{ item.notes }}</p> -->
+        </ion-label>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

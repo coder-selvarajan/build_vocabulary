@@ -50,7 +50,7 @@ export class VocabDetailsPage implements OnInit {
 
     if (this.vocabId) {
       
-      this.vocab.createddate = new Date();
+      // this.vocab.createddate = new Date();
       this.vocab.modifieddate = new Date();
 
       this.vocabService.updateVocab(this.vocab, this.vocabId).then(() => {

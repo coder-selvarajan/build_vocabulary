@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'details', loadChildren: './pages/vocab-details/vocab-details.module#VocabDetailsPageModule' },
   { path: 'details/:id', loadChildren: './pages/vocab-details/vocab-details.module#VocabDetailsPageModule' },
   { path: 'view/:id', loadChildren: './pages/vocab-view/vocab-view.module#VocabViewPageModule' },
+  { path: 'flipcard', loadChildren: './pages/flipcard/flipcard.module#FlipcardPageModule' },
 
 ];
 

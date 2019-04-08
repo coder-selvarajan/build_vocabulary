@@ -4,6 +4,14 @@
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
     <ion-title> {{ vocab.category | uppercase }} </ion-title>
+    
+    <ion-buttons slot="end">
+      <ion-button (click)="edit()">
+        <!-- <ion-icon slot="icon-only" name="create"></ion-icon> -->
+        Edit
+      </ion-button>
+    </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 

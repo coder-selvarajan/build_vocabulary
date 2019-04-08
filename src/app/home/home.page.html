@@ -9,14 +9,51 @@
 <ion-content>
 
   <ion-list>
+    <ion-list-header>
+      <ion-label>Topics</ion-label>
+    </ion-list-header>
     <ion-item-sliding *ngFor="let category of categories">
       <ion-item lines="inset" button [routerLink]="['/listing', category]">
-        <ion-label>
+        <ion-label color="primary">
           {{ category | uppercase }}
         </ion-label>
       </ion-item>
     </ion-item-sliding>
   </ion-list>
+
+  <ion-list>
+      <ion-list-header>
+        <ion-label>Games</ion-label>
+      </ion-list-header>
+      <ion-item-sliding *ngFor="let game of games">
+        <ion-item lines="inset" button [routerLink]="['/flipcard']">
+          <ion-label color="secondary">
+            {{ game }}
+          </ion-label>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Recently Accessed Items </ion-label>
+    </ion-list-header>
+    <ion-item-sliding *ngFor="let item of vocabs; let i = index;"  #slidingItem>
+      <ion-item lines="inset" button [routerLink]="['/view', item.id]">
+        <ion-label>
+          <h2>{{ item.vocab }}</h2>
+          <p>(t) {{ item.category }} - (m) {{ item.notes }}</p>
+        </ion-label>
+      </ion-item>
+    
+      <ion-item-options side="end">
+        <ion-item-option (click)="edit(slidingItem, item.id)" color="secondary">
+          Edit 
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button routerLink="/details" routerDirection="forward">

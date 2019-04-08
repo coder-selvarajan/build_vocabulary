@@ -14,7 +14,9 @@ export class VocabViewPage implements OnInit {
     vocab: "",
     category: "vocabulary",
     subcategory: "",
-    notes: ""
+    notes: "",
+    createddate: new Date(),
+    modifieddate: new Date()
   };
   vocabId = null;
   
@@ -37,6 +39,10 @@ export class VocabViewPage implements OnInit {
       loading.dismiss();
       this.vocab = res;
     });
+  }
+
+  edit() {
+    this.nav.navigateForward("details/" + this.vocabId);
   }
 
 }

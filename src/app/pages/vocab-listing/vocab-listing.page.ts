@@ -21,11 +21,16 @@ export class VocabListingPage implements OnInit {
   ngOnInit() {
     this.category = this.route.snapshot.params['category'];
     if (this.category) {
-      this.getItemsByCategory();
+      // this.getItemsByCategory();
+      this.getDataByTime();
     }
   }
 
-  async getItemsByCategory() {
+  remove(item) {
+    this.vocabService.removeVocab(item.id);
+  }
+
+  async getDataByTime(){
     const loading = await this.loadingController.create({
       message: "Loading.."
     });
@@ -33,15 +38,26 @@ export class VocabListingPage implements OnInit {
 
     this.vocabs = [];
     
-    this.vocabService.getVocabs().subscribe(res => {
+    this.vocabService.getVocabsByTime().subscribe(res => {
       console.log(this.category);
       loading.dismiss();
       this.vocabs = res.filter(item => item.category == this.category);
     });
   }
 
-  remove(item) {
-    this.vocabService.removeVocab(item.id);
+  async getDataByAZ(){
+    const loading = await this.loadingController.create({
+      message: "Loading.."
+    });
+    await loading.present();
+
+    this.vocabs = [];
+    
+    this.vocabService.getVocabsByAZ().subscribe(res => {
+      console.log(this.category);
+      loading.dismiss();
+      this.vocabs = res.filter(item => item.category == this.category);
+    });
   }
 
   edit(slidingItem: IonItemSliding, id: String) {

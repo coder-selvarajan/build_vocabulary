@@ -39,8 +39,10 @@ export class VocabService {
 
   }
 
-  getVocabs() {
+  getVocabsByTime() {
     // return this.vocabs$;
+
+    this.vocabCollection = this.db.collection<Vocab>('Vocabulary', ref => ref.orderBy('modifieddate', 'desc'));
 
     return this.vocabCollection.snapshotChanges().pipe(
       map(actions => {
@@ -52,6 +54,39 @@ export class VocabService {
       })
     );
   }
+
+  getLast5Vocabs() {
+    // return this.vocabs$;
+
+    this.vocabCollection = this.db.collection<Vocab>('Vocabulary', ref => ref.orderBy('modifieddate', 'desc').limit(5));
+    
+    return this.vocabCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data() as Vocab;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      })
+    );
+  }
+
+  getVocabsByAZ() {
+    // return this.vocabs$;
+
+    this.vocabCollection = this.db.collection<Vocab>('Vocabulary', ref => ref.orderBy('vocab'));
+    
+    return this.vocabCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data() as Vocab;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      })
+    );
+  }
+
 
   getVocab(id) {
     return this.vocabCollection.doc<Vocab>(id).valueChanges();
