@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title> RANDOM PICK </ion-title>
+    
+    <ion-buttons slot="end">
+      <ion-button (click)="getRandomPick()">
+        <ion-icon slot="icon-only" name="refresh"></ion-icon>
+        <!-- Edit -->
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list lines="none">
+    <ion-item lines="full">
+      <ion-text color="primary">
+          <h1>{{ randomVocab.vocab }}</h1>
+      </ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-text color="secondary">
+        (t) {{ randomVocab.category }}
+      </ion-text>
+    </ion-item>
+    <ion-item *ngIf="randomVocab.subcategory">
+      (st) {{ randomVocab.subcategory }}
+    </ion-item>
+    <ion-item>
+      <ion-text color="dark">
+          <p>(m) {{ randomVocab.notes }}</p>
+      </ion-text>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'details/:id', loadChildren: './pages/vocab-details/vocab-details.module#VocabDetailsPageModule' },
   { path: 'view/:id', loadChildren: './pages/vocab-view/vocab-view.module#VocabViewPageModule' },
   { path: 'flipcard', loadChildren: './pages/flipcard/flipcard.module#FlipcardPageModule' },
+  { path: 'randompick', loadChildren: './pages/randompick/randompick.module#RandompickPageModule' },
 
 ];
 

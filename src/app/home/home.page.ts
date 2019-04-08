@@ -26,7 +26,7 @@ export class HomePage implements OnInit {
 
     this.games = [
       'FLIPCARDS - Vocabulary',
-      'RANDOM - Phrases / Idioms / Etc...'
+      'RANDOM PICK'
     ];
   }
 

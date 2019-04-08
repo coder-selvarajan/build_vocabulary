@@ -10,7 +10,7 @@
 
   <ion-list>
     <ion-list-header>
-      <ion-label>Topics</ion-label>
+      <ion-label>CATEGORIES</ion-label>
     </ion-list-header>
     <ion-item-sliding *ngFor="let category of categories">
       <ion-item lines="inset" button [routerLink]="['/listing', category]">
@@ -23,12 +23,17 @@
 
   <ion-list>
       <ion-list-header>
-        <ion-label>Games</ion-label>
+        <ion-label>GAMES</ion-label>
       </ion-list-header>
-      <ion-item-sliding *ngFor="let game of games">
+      <ion-item-sliding>
         <ion-item lines="inset" button [routerLink]="['/flipcard']">
           <ion-label color="secondary">
-            {{ game }}
+            FLIPCARD - Vocabulary
+          </ion-label>
+        </ion-item>
+        <ion-item lines="inset" button [routerLink]="['/randompick']">
+          <ion-label color="secondary">
+            RANDOM PICK - Phrases, Idioms, Etc...
           </ion-label>
         </ion-item>
       </ion-item-sliding>
@@ -36,7 +41,7 @@
 
   <ion-list>
     <ion-list-header>
-      <ion-label>Recently Accessed Items </ion-label>
+      <ion-label>RECENTLY ACCESSED ITEMS</ion-label>
     </ion-list-header>
     <ion-item-sliding *ngFor="let item of vocabs; let i = index;"  #slidingItem>
       <ion-item lines="inset" button [routerLink]="['/view', item.id]">

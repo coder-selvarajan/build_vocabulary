@@ -13,7 +13,7 @@ export class FlipcardPage implements OnInit {
   vocabs: Vocab[] = [];
   rndVocabs: Vocab[] = [];
   category: string = "vocabulary";
-  rndItemCount: number = 5;
+  rndItemCount: number = 4;
 
   constructor(private vocabService: VocabService, private route: ActivatedRoute, 
     private loadingController: LoadingController, private navController: NavController) {
@@ -34,7 +34,6 @@ export class FlipcardPage implements OnInit {
     this.vocabs = [];
     
     this.vocabService.getVocabsByAZ().subscribe(res => {
-      console.log(this.category);
       loading.dismiss();
       this.vocabs = res.filter(item => item.category == this.category);
       this.getRandomItems();
@@ -42,7 +41,7 @@ export class FlipcardPage implements OnInit {
   }
 
   getRandomItems(){
-    var randomItem;
+    var randomItem = null;
     this.rndVocabs = [];
     
     for(var i=0; i<this.rndItemCount; i++) {
