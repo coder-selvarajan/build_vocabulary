@@ -9,7 +9,9 @@ export interface Vocab {
   vocab: string,
   category: string,
   subcategory: string,
-  notes: string
+  notes: string,
+  createddate: Date,
+  modifieddate: Date
 }
 
 @Injectable({
@@ -22,7 +24,7 @@ export class VocabService {
   vocabs$: Observable<Vocab[]>;
 
   constructor(private db: AngularFirestore) {
-    this.vocabCollection = this.db.collection<Vocab>('Vocabulary');
+    this.vocabCollection = this.db.collection<Vocab>('Vocabulary', ref => ref.orderBy('createddate', 'desc'));
 
     console.log("in constructor");
 
@@ -68,3 +70,4 @@ export class VocabService {
   }
 
 }
+

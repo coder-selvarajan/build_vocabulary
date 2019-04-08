@@ -19,10 +19,10 @@
           </div>
         </ng-container>
     
-        <ion-item-sliding *ngFor="let item of vocabs"  #slidingItem>
+        <ion-item-sliding *ngFor="let item of vocabs; let i = index;"  #slidingItem>
           <ion-item lines="inset" button [routerLink]="['/view', item.id]">
             <ion-label>
-              <h2>{{ item.vocab }}</h2>
+              <h2>{{ i+1 }})&nbsp;{{ item.vocab }}</h2>
               <p>{{ item.notes }}</p>
             </ion-label>
           </ion-item>
@@ -32,10 +32,9 @@
               <!-- <ion-icon name="add"></ion-icon>  -->
               Edit 
             </ion-item-option>
-            <ion-item-option (click)="remove(item)" color="danger">
-              <!-- <ion-icon name="close"></ion-icon> -->
+            <!-- <ion-item-option (click)="remove(item)" color="danger">
               Remove 
-            </ion-item-option>
+            </ion-item-option> -->
           </ion-item-options>
         </ion-item-sliding>
       </ion-list>
@@ -45,4 +44,6 @@
           <ion-icon name="add"></ion-icon>
         </ion-fab-button>
       </ion-fab>
+
+      <!-- {{ this.vocabs | json }} -->
 </ion-content>

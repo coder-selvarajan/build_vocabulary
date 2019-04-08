@@ -14,7 +14,9 @@ export class VocabDetailsPage implements OnInit {
     vocab: "",
     category: "vocabulary",
     subcategory: "",
-    notes: ""
+    notes: "",
+    createddate: new Date(),
+    modifieddate: new Date()
   };
 
   vocabId = null;
@@ -47,6 +49,10 @@ export class VocabDetailsPage implements OnInit {
     await loading.present();
 
     if (this.vocabId) {
+      
+      this.vocab.createddate = new Date();
+      this.vocab.modifieddate = new Date();
+
       this.vocabService.updateVocab(this.vocab, this.vocabId).then(() => {
         loading.dismiss();
         this.nav.back();
