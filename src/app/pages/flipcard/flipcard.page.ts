@@ -13,7 +13,7 @@ export class FlipcardPage implements OnInit {
   vocabs: Vocab[] = [];
   rndVocabs: Vocab[] = [];
   category: string = "vocabulary";
-  rndItemCount: number = 4;
+  rndItemCount: number = 3;
 
   constructor(private vocabService: VocabService, private route: ActivatedRoute, 
     private loadingController: LoadingController, private navController: NavController) {
@@ -36,16 +36,24 @@ export class FlipcardPage implements OnInit {
     this.vocabService.getVocabsByAZ().subscribe(res => {
       loading.dismiss();
       this.vocabs = res.filter(item => item.category == this.category);
+
       this.getRandomItems();
     });
   }
 
   getRandomItems(){
     var randomItem = null;
+    var rndNo: number;
+    var rndSeries: number[] = [];
     this.rndVocabs = [];
     
     for(var i=0; i<this.rndItemCount; i++) {
-      randomItem = this.vocabs[Math.floor(Math.random()*this.vocabs.length)];
+      rndNo = Math.floor(Math.random()*this.vocabs.length);
+      
+      if (rndSeries.filter(i => i == rndNo).length > 0) continue;
+      rndSeries.push(rndNo);
+      
+      randomItem = this.vocabs[rndNo];
       this.rndVocabs.push(randomItem);  
     }
   }

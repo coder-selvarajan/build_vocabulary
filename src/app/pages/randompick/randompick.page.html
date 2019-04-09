@@ -24,15 +24,17 @@
     </ion-item>
     <ion-item>
       <ion-text color="secondary">
-        (t) {{ randomVocab.category }}
+        type : {{ randomVocab.category }}
       </ion-text>
     </ion-item>
     <ion-item *ngIf="randomVocab.subcategory">
-      (st) {{ randomVocab.subcategory }}
+      <ion-text color="success">
+        subcategory : {{ randomVocab.subcategory }}
+      </ion-text>
     </ion-item>
     <ion-item>
       <ion-text color="dark">
-          <p>(m) {{ randomVocab.notes }}</p>
+          <p>{{ randomVocab.notes }}</p>
       </ion-text>
     </ion-item>
 

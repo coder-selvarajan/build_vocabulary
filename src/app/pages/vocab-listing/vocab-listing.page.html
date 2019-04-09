@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ category | uppercase }}</ion-title>
+    <ion-title>{{ category | uppercase }} ({{ vocabs.length }})</ion-title>
 
     <ion-buttons slot="end">
       <ion-button color="secondary" (click)="getDataByAZ()">
@@ -37,7 +37,7 @@
         <ion-item-sliding *ngFor="let item of vocabs; let i = index;"  #slidingItem>
           <ion-item lines="inset" button [routerLink]="['/view', item.id]">
             <ion-label>
-              <h2>{{ i+1 }})&nbsp;{{ item.vocab }}</h2>
+              <h2>{{ item.vocab }}</h2>
               <p>{{ item.notes }}</p>
             </ion-label>
           </ion-item>

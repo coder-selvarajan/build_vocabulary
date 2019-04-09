@@ -25,7 +25,10 @@
       <ion-list-header>
         <ion-label>GAMES</ion-label>
       </ion-list-header>
-      <ion-item-sliding>
+      <ion-button class="marginL15" color="tertiary" [routerLink]="['/flipcard']">FLIPCARD</ion-button>
+      <ion-button class="marginL15" color="secondary" [routerLink]="['/randompick']">RANDOM PICK</ion-button>
+
+      <!-- <ion-item-sliding>
         <ion-item lines="inset" button [routerLink]="['/flipcard']">
           <ion-label color="secondary">
             FLIPCARD - Vocabulary
@@ -36,7 +39,7 @@
             RANDOM PICK - Phrases, Idioms, Etc...
           </ion-label>
         </ion-item>
-      </ion-item-sliding>
+      </ion-item-sliding> -->
     </ion-list>
 
   <ion-list>

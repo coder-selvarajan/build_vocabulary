@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
-    <ion-title> RANDOM VOCAB </ion-title>
+    <ion-title> FLIPCARD </ion-title>
 
     <ion-buttons slot="end">
       <ion-button (click)="getRandomItems()">
@@ -18,13 +18,13 @@
 <ion-content>
   <ion-list lines="full">
     <ion-list-header>
-      <ion-label>Guess the meaning before you flip </ion-label>
+      <ion-label>GUESS THE MEANING BEFORE YOU FLIP </ion-label>
     </ion-list-header>
     <ng-container *ngIf="rndVocabs">
       <ion-item-sliding *ngFor="let item of rndVocabs; let i = index" #slidingItem>
         <ion-item lines="inset" button [routerLink]="['/view', item.id]">
           <ion-label>
-            <h1>{{ item.vocab }}<br/></h1>
+            <h1 class="marginV10">{{ item.vocab }}<br/></h1>
             <!-- <p>(t) {{ item.category }} - (m) {{ item.notes }}</p> -->
           </ion-label>
         </ion-item>
