@@ -3,38 +3,54 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
-    <ion-title> {{ vocab.category | uppercase }} </ion-title>
-    
+    <ion-title> INFO </ion-title>
+
     <ion-buttons slot="end">
       <ion-button (click)="edit()">
         <!-- <ion-icon slot="icon-only" name="create"></ion-icon> -->
         Edit
       </ion-button>
     </ion-buttons>
-
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-list lines="none">
+
+  <ion-card-header>
+      <ion-card-subtitle color="primary">{{ vocab.category }} {{ vocab.subcategory }}</ion-card-subtitle>
+      <ion-card-title color="secondary">{{ vocab.vocab }}</ion-card-title>
+  </ion-card-header>
+  <hr/>
+  <ion-card-content>
+    {{ vocab.notes }}
+  </ion-card-content>
+
+  <!-- <ion-list lines="none">
     <ion-item lines="full">
-      <ion-text color="primary">
-          <h1>{{ vocab.vocab }}</h1>
-      </ion-text>
-    </ion-item>
-    <ion-item>
       <ion-text color="secondary">
-        (t) {{ vocab.category }}
+      <p>  {{ vocab.category }} &nbsp; {{ vocab.subcategory }} <br/></p>
       </ion-text>
-    </ion-item>
-    <ion-item *ngIf="vocab.subcategory">
-      (st) {{ vocab.subcategory }}
+      <ion-text color="primary">
+        <h1>{{ vocab.vocab }}</h1>
+      </ion-text>
     </ion-item>
     <ion-item>
       <ion-text color="dark">
           <p>(m) {{ vocab.notes }}</p>
       </ion-text>
     </ion-item>
+  </ion-list> -->
 
-  </ion-list>
+  <!-- <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle color="primary"
+        >{{ vocab.category }} {{ vocab.subcategory }}</ion-card-subtitle
+      >
+      <ion-card-title color="secondary">{{ vocab.vocab }}</ion-card-title>
+      <hr />
+    </ion-card-header>
+    <ion-card-content>
+      {{ vocab.notes }}
+    </ion-card-content>
+  </ion-card> -->
 </ion-content>

@@ -1,22 +1,31 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="secondary">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
     <ion-title> RANDOM PICK </ion-title>
     
-    <ion-buttons slot="end">
+    <!-- <ion-buttons slot="end">
       <ion-button (click)="getRandomPick()">
         <ion-icon slot="icon-only" name="refresh"></ion-icon>
-        <!-- Edit -->
       </ion-button>
-    </ion-buttons>
+    </ion-buttons> -->
 
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-list lines="none">
+  
+  <ion-card-header>
+      <ion-card-subtitle color="primary">{{ randomVocab.category }} {{ randomVocab.subcategory }}</ion-card-subtitle>
+      <ion-card-title color="secondary">{{ randomVocab.vocab }}</ion-card-title>
+  </ion-card-header>
+  <hr/>
+  <ion-card-content>
+    {{ randomVocab.notes }}
+  </ion-card-content>
+  
+  <!-- <ion-list lines="none">
     <ion-item lines="full">
       <ion-text color="primary">
           <h1>{{ randomVocab.vocab }}</h1>
@@ -38,5 +47,11 @@
       </ion-text>
     </ion-item>
 
-  </ion-list>
+  </ion-list> -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="getRandomPick()" color="secondary">
+      <ion-icon name="refresh"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
 </ion-content>

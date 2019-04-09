@@ -1,3 +1,17 @@
 p {
     white-space: pre-line;
 }
+
+
+.card-content {
+    white-space: pre-line;
+    // margin-top: 5px;
+}
+
+ion-card, .card-ios, .card-md {
+    margin: 0px;
+}
+
+hr {
+    border-bottom: 1px solid silver;
+}
