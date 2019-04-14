@@ -12,6 +12,7 @@ export class VocabListingPage implements OnInit {
 
   vocabs: Vocab[] = [];
   category: string = "";
+  subcategory: string = "";
 
   constructor(private vocabService: VocabService, private route: ActivatedRoute, 
     private loadingController: LoadingController, private navController: NavController) {
@@ -20,6 +21,7 @@ export class VocabListingPage implements OnInit {
 
   ngOnInit() {
     this.category = this.route.snapshot.params['category'];
+    this.subcategory = this.route.snapshot.params['subcategory'];
     if (this.category) {
       // this.getItemsByCategory();
       this.getDataByTime();
@@ -39,9 +41,15 @@ export class VocabListingPage implements OnInit {
     this.vocabs = [];
     
     this.vocabService.getVocabsByTime().subscribe(res => {
-      console.log(this.category);
+      // console.log(this.category);
       loading.dismiss();
-      this.vocabs = res.filter(item => item.category == this.category);
+      if (this.subcategory == "") {
+        this.vocabs = res.filter(item => item.category == this.category);
+      }
+      else {
+        this.vocabs = res.filter(item => item.category == this.category && item.subcategory == this.subcategory);
+      }
+          
     });
   }
 
@@ -56,7 +64,13 @@ export class VocabListingPage implements OnInit {
     this.vocabService.getVocabsByAZ().subscribe(res => {
       console.log(this.category);
       loading.dismiss();
-      this.vocabs = res.filter(item => item.category == this.category);
+
+      if (this.subcategory == "") {
+        this.vocabs = res.filter(item => item.category == this.category);
+      }
+      else {
+        this.vocabs = res.filter(item => item.category == this.category && item.subcategory == this.subcategory);
+      }
     });
   }
 
