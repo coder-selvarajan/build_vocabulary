@@ -54,10 +54,10 @@ export class VocabService {
     );
   }
 
-  getLast5Vocabs() {
+  getRecentVocabs() {
     // return this.vocabs$;
 
-    this.vocabCollection = this.db.collection<Vocab>('Vocabulary', ref => ref.orderBy('modifieddate', 'desc').limit(5));
+    this.vocabCollection = this.db.collection<Vocab>('Vocabulary', ref => ref.orderBy('modifieddate', 'desc').limit(10));
     
     return this.vocabCollection.snapshotChanges().pipe(
       map(actions => {

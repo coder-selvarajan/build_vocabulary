@@ -10,7 +10,8 @@ const routes: Routes = [
   { path: 'view/:id', loadChildren: './pages/vocab-view/vocab-view.module#VocabViewPageModule' },
   { path: 'flipcard', loadChildren: './pages/flipcard/flipcard.module#FlipcardPageModule' },
   { path: 'randompick', loadChildren: './pages/randompick/randompick.module#RandompickPageModule' },
-  { path: 'subcat-listing', loadChildren: './pages/subcat-listing/subcat-listing.module#SubcatListingPageModule' },
+  { path: 'subcat-listing/:category', loadChildren: './pages/subcat-listing/subcat-listing.module#SubcatListingPageModule' },
+  { path: 'getexpressions', loadChildren: './pages/getexpressions/getexpressions.module#GetexpressionsPageModule' },
 
 ];
 

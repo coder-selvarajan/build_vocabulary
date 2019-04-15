@@ -4,7 +4,7 @@
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
     <ion-title> RANDOM PICK </ion-title>
-    
+
     <!-- <ion-buttons slot="end">
       <ion-button (click)="getRandomPick()">
         <ion-icon slot="icon-only" name="refresh"></ion-icon>
@@ -15,16 +15,16 @@
 </ion-header>
 
 <ion-content padding>
-  
-  <ion-card-header>
+  <ng-container *ngIf="randomVocab">
+    <ion-card-header>
       <ion-card-subtitle color="primary">{{ randomVocab.category }} {{ randomVocab.subcategory }}</ion-card-subtitle>
       <ion-card-title color="secondary">{{ randomVocab.vocab }}</ion-card-title>
-  </ion-card-header>
-  <hr/>
-  <ion-card-content>
-    {{ randomVocab.notes }}
-  </ion-card-content>
-  
+    </ion-card-header>
+    <hr />
+    <ion-card-content>
+      {{ randomVocab.notes }}
+    </ion-card-content>
+  </ng-container>
   <!-- <ion-list lines="none">
     <ion-item lines="full">
       <ion-text color="primary">

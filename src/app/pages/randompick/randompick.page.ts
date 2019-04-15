@@ -33,7 +33,7 @@ export class RandompickPage implements OnInit {
     
     this.vocabService.getVocabsByAZ().subscribe(res => {
       loading.dismiss();
-      this.vocabs = res.filter(item => item.category != this.category);
+      this.vocabs = res.filter(item => item.category != 'vocabulary' && item.category != 'expression');
       this.getRandomPick();
     });
   }

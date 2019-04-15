@@ -1,37 +1,70 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>EXPRESSION</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>EXPRESSIONS</ion-title>
+
+    <!-- <ion-buttons slot="end">
+      <ion-button color="secondary" (click)="getDataByAZ()">
+        a-z
+      </ion-button>
+      |
+      <ion-button color="secondary" (click)="getDataByTime()">
+        time
+      </ion-button>
+    </ion-buttons> -->
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <p class="margin10">
+    <ion-segment color="secondary" [(ngModel)]="displayMode">
+      <ion-segment-button value="bycategory" (ionSelect)="segmentCategoryClicked($event)">
+        <ion-label>By Category</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="byexpression" (ionSelect)="segmentExpressionClicked($event)">
+        <ion-label>By Expression</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </p>
 
-  <ion-list>
-    <ion-list-header>
-      <ion-label>BY CATEGORY</ion-label>
-    </ion-list-header>
-    <ion-item-sliding *ngFor="let item of subcategory; let i = index;" #slidingItem>
-      <ion-item lines="inset" button [routerLink]="['/listing', category, item.subcategory]">
-        <ion-label>
-          <h2>{{ item.subcategory }}</h2>
+  <ng-container *ngIf="displayMode == 'bycategory'">
+    <ion-list>
+      <!-- <ion-list-header>
+            <ion-label>BY CATEGORY</ion-label>
+          </ion-list-header> -->
+      <ion-item lines="inset" button [routerLink]="['/listing', category, '']">
+        <ion-label color="primary">
+          <h2>UN-CATEGORISED</h2>
         </ion-label>
       </ion-item>
-    </ion-item-sliding>
-  </ion-list>
+      <ion-item-sliding *ngFor="let item of subcategory; let i = index;" #slidingItem>
+        <ion-item lines="inset" button [routerLink]="['/listing', category, item.subcategory]">
+          <ion-label color="primary">
+            <h2>{{ item.subcategory }}</h2>
+          </ion-label>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-list>
+  </ng-container>
 
-  <ion-list>
-    <ion-list-header>
-      <ion-label>OTHER EXPRESSIONS</ion-label>
-    </ion-list-header>
-    <ion-item-sliding *ngFor="let item of othervocabs; let i = index;" #slidingItem>
-      <ion-item lines="inset" button [routerLink]="['/view', item.id]">
-        <ion-label>
-          <h2>{{ item.vocab }}</h2>
-          <p>{{ item.notes }}</p>
-        </ion-label>
-      </ion-item>
-    </ion-item-sliding>
-  </ion-list>
+  <ng-container *ngIf="displayMode == 'byexpression'">
+    <ion-list>
+      <!-- <ion-list-header>
+            <ion-label>OTHER EXPRESSIONS</ion-label>
+          </ion-list-header> -->
+      <ion-item-sliding *ngFor="let item of vocabs; let i = index;" #slidingItem>
+        <ion-item lines="inset" button [routerLink]="['/view', item.id]">
+          <ion-label>
+            <h2>{{ item.vocab }}</h2>
+            <p>{{ item.subcategory }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-list>
+  </ng-container>
 
   <!-- {{ subcategory | json }} -->
 

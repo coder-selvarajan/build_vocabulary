@@ -43,7 +43,7 @@ export class VocabListingPage implements OnInit {
     this.vocabService.getVocabsByTime().subscribe(res => {
       // console.log(this.category);
       loading.dismiss();
-      if (this.subcategory == "") {
+      if (this.subcategory == "ALL") {
         this.vocabs = res.filter(item => item.category == this.category);
       }
       else {
@@ -65,7 +65,7 @@ export class VocabListingPage implements OnInit {
       console.log(this.category);
       loading.dismiss();
 
-      if (this.subcategory == "") {
+      if (this.subcategory == "ALL") {
         this.vocabs = res.filter(item => item.category == this.category);
       }
       else {

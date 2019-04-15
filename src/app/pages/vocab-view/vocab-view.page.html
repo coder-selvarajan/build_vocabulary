@@ -17,10 +17,15 @@
 <ion-content padding>
 
   <ion-card-header>
-      <ion-card-subtitle color="primary">{{ vocab.category }} {{ vocab.subcategory }}</ion-card-subtitle>
-      <ion-card-title color="secondary">{{ vocab.vocab }}</ion-card-title>
+    <ion-card-subtitle color="primary">
+      {{ vocab.category }}
+      <ng-container *ngIf="vocab.subcategory != ''">
+        - {{ vocab.subcategory }}
+      </ng-container>
+    </ion-card-subtitle>
+    <ion-card-title color="secondary">{{ vocab.vocab }}</ion-card-title>
   </ion-card-header>
-  <hr/>
+  <hr />
   <ion-card-content>
     {{ vocab.notes }}
   </ion-card-content>

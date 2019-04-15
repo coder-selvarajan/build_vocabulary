@@ -31,10 +31,10 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-    this.getRecent5Vocabs();
+    this.getRecentVocabs();
   }
 
-  async getRecent5Vocabs(){
+  async getRecentVocabs(){
     const loading = await this.loadingController.create({
       message: "Loading.."
     });
@@ -42,7 +42,7 @@ export class HomePage implements OnInit {
 
     this.vocabs = [];
     
-    this.vocabService.getLast5Vocabs().subscribe(res => {
+    this.vocabService.getRecentVocabs().subscribe(res => {
       loading.dismiss();
       this.vocabs = res;
     });

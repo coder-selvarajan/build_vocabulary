@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VocabService, Vocab } from 'src/app/services/vocab.service';
 import { ActivatedRoute } from '@angular/router';
-import { NavController, LoadingController } from '@ionic/angular';
+import { NavController, LoadingController, IonSegmentButton } from '@ionic/angular';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
@@ -15,6 +15,7 @@ export class SubcatListingPage implements OnInit {
   othervocabs: Vocab[] = [];  
   category: string = "expression";
   subcategory: Vocab[] = [];
+  displayMode: string = 'bycategory';
 
   constructor(private vocabService: VocabService, private route: ActivatedRoute, 
     private loadingController: LoadingController, private navController: NavController) {
@@ -23,7 +24,14 @@ export class SubcatListingPage implements OnInit {
 
   ngOnInit() {
     this.getDataByTime();
-    
+  }
+
+  segmentCategoryClicked(ev: any) {
+    this.displayMode = 'bycategory';
+  }
+
+  segmentExpressionClicked(ev: any) {
+    this.displayMode = 'byexpression';
   }
 
   async getDataByTime(){

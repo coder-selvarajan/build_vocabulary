@@ -1,0 +1,44 @@
+<ion-header>
+    <ion-toolbar color="success">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/home"></ion-back-button>
+      </ion-buttons>
+      <ion-title> RANDOM EXPRESSIONS </ion-title>
+  
+      <!-- <ion-buttons slot="end">
+        <ion-button (click)="getRandomItems()">
+          <ion-icon slot="icon-only" name="refresh"></ion-icon>
+        </ion-button>
+      </ion-buttons> -->
+    </ion-toolbar>
+  </ion-header>
+  
+  <br/>
+  
+  <ion-content>
+    <ion-list lines="full">
+      <!-- <ion-list-header>
+        <ion-label>GUESS THE MEANING BEFORE YOU FLIP </ion-label>
+      </ion-list-header> -->
+      <ng-container *ngIf="rndVocabs">
+        <ion-item-sliding *ngFor="let item of rndVocabs; let i = index" #slidingItem>
+          <ion-item lines="inset" button [routerLink]="['/view', item.id]">
+            <ion-label>
+              <h2 class="marginV10">{{ item.vocab }}<br/></h2>
+              <p>{{ item.subcategory }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-item-sliding>
+      </ng-container>
+    </ion-list>
+    <br/>
+  
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="getRandomItems()" color="success">
+        <ion-icon name="refresh"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  
+  </ion-content>
+
+  
