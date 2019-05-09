@@ -1,6 +1,6 @@
 # Vocabulary Builder
 
-Its a Progressive Web App built in Ionic framework to facilitate building our own vocabulary base. It also provide few methods to get practive with what we learn. 
+Its a Progressive Web App built in Ionic framework to help building your own vocabulary base. It also has few games to revisit the vocabulary in fun way. 
 
 ## App Home Screen
 
